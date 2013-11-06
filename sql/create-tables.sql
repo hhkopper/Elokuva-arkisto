@@ -19,14 +19,10 @@ foreign key(kayttaja) references kayttaja
 
 create table henkilo(
 idtunnus serial primary key,
-nimi varchar(100),
-ohjaus integer,
-roolitus integer,
-foreign key(ohjaus) references ohjaus,
-foreign key(roolitus) references roolitus
+nimi varchar(100)
 );
 
-create table roolitus (
+create table roolisuoritus (
 idtunnus serial primary key,
 elokuva integer,
 nayttelija integer,
