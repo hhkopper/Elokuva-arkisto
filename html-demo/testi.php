@@ -1,6 +1,7 @@
 <?php
 //Lista asioista array-tietotyyppiin laitettuna:
-$lista = array("Kissa", "Kala", "Koira", "Hiiri");
+require_once "../kirjasto/kayttaja.php";
+$lista = kayttaja::getKayttajat();
 ?><!DOCTYPE HTML>
 <html>
   <head><title>Otsikko</title></head>
@@ -8,7 +9,7 @@ $lista = array("Kissa", "Kala", "Koira", "Hiiri");
     <h1>Listaelementtitesti</h1>
     <ul>
     <?php foreach($lista as $asia) { ?>
-      <li><?php echo $asia; ?></li>
+      <li><?php echo $asia-> getKayttajatunnus() ?></li>
     <?php } ?>
     </ul>
   </body>
