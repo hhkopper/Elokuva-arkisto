@@ -15,5 +15,20 @@
 		<?php if (!empty($_GET['hakuOhjaaja'])): ?>
 		<p> Hakusanasi oli <?php echo $_GET['hakuOhjaaja']; ?> </p>
 		<?php endif; ?>
+	
+		<table border="1">
+			<tr>
+				<th>Elokuvan nimi</th>
+				<th> Numero</th>
+			</tr>
+			<tr>
+				<td> Joulupukki ja noita rumpu </td>
+				<td> 22</td>
+			</tr>
+			<tr>
+				<td> Kellopeliappelsiini </td>
+				<td> 15</td>
+			</tr>
+		</table>
 	</body>
 </html>
