@@ -1,7 +1,7 @@
 <?php
 //Lista asioista array-tietotyyppiin laitettuna:
 require_once "../kirjasto/kayttaja.php";
-$lista = kayttaja::getKayttajat();
+$lista = kayttaja::getKayttaja();
 ?><!DOCTYPE HTML>
 <html>
   <head><title>Otsikko</title></head>

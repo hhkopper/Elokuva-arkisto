@@ -6,19 +6,21 @@ class Kayttaja {
 	private $kayttajatunnus;
 	private $salasana;
 
-	public static function getKayttajat() {
-		$sql = "SELECT idtunnus, kayttajatunnus, salasana FROM kayttaja";
-		$kysely = annaYhteys() ->prepare($sql); $kysely->execute();
+	public static function getKayttaja($kayttaja, $sana) {
+		$sql = "SELECT idtunnus, kayttajatunnus, salasana FROM kayttaja where kayttajatunnus = ? AND salasana = ?";
+		$kysely = annaYhteys() ->prepare($sql); 
+		$kysely->execute(array($kayttaja, $salasana));
 
-		$tulokset = array();
-		foreach($kysely->fetchAll() as $tulos) {
+		$tulokset = $kysely -> fetchObject();
+		if($tulos == null) {
+			return null;
+		} else {
 			$kayttaja = new Kayttaja();
 			foreach($tulos as $kentta => $arvo) {
-        			$kayttaja->$kentta = $arvo;
-     			}
-			$tulokset[] = $kayttaja;
+				$kayttaja->$kentta = $arvo;
+			}
+		return $kayttaja;
 		}
-		return $tulokset;
 	}
 
 	public function getKayttajatunnus() {
