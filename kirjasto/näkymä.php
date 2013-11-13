@@ -1,6 +1,7 @@
 <?php
 
-	function naytaNakyma($sivu) {
-		require 'views/login.php';
+	function naytaNakyma($sivu, $data = array()) {
+		$data = (object)$data;
+		require "views/$sivu";
 		exit();
 	} 

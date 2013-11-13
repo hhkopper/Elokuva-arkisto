@@ -9,14 +9,14 @@ class Kayttaja {
 	public static function getKayttaja($kayttaja, $sana) {
 		$sql = "SELECT idtunnus, kayttajatunnus, salasana FROM kayttaja where kayttajatunnus = ? AND salasana = ?";
 		$kysely = annaYhteys() ->prepare($sql); 
-		$kysely->execute(array($kayttaja, $salasana));
+		$kysely->execute(array($kayttaja, $sana));
 
 		$tulokset = $kysely -> fetchObject();
-		if($tulos == null) {
+		if($tulokset == null) {
 			return null;
 		} else {
 			$kayttaja = new Kayttaja();
-			foreach($tulos as $kentta => $arvo) {
+			foreach($tulokset as $kentta => $arvo) {
 				$kayttaja->$kentta = $arvo;
 			}
 		return $kayttaja;

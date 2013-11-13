@@ -7,7 +7,10 @@
 	<body>
 		<h1> Elokuva-arkisto </h1>		
 		<p> Tämän sivuston tarkoituksena on antaa mahdollisuus yksityishenkilöille luoda oma elokuva-arkisto. Arkistot on tarkoitettu omaan käyttöön, joten muut eivät pysty seuraamaan luomaasi arkistoa.</p>
-		<form action='doLogin' method='POST'>
+		<?php if(!empty($data->virhe)): ?>
+		<?php echo $data->virhe; ?>
+		<?php endif; ?>
+		<form action='doLogin.php' method='POST'>
                         Käyttäjätunnus: <input type="text" name="käyttäjätunnus"><br>
                         Salasana: <input type="password" name="salasana"><br>
 			<button type='submit'>Kirjaudu</button>
