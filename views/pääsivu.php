@@ -1,4 +1,6 @@
 <?php
+require_once "../Elokuva-arkisto/kirjasto/toiminnot.php";
+saakoNahdaSivun();
 ?><!DOCTYPE html>
 
 <html>
@@ -10,7 +12,7 @@
 		<a href="annaLomake.php"> Lisää elokuva </a>
 		<a href="logOut.php"> Kirjaudu ulos </a>
 		<p> Etsi elokuvia arkistostasi erilaisilla hakusanoilla tai näyttelijän tai ohjaajan nimellä. Vastaukseksi saat listan elokuvia, joihin hakusi liittyy.</p>
-		<form action="lista.php" method="get">
+		<form action="listaus.php" method="get">
 			Hakusana: <input type="text" name="hakuSana">
 			<input type="submit" value="Hae"><br>
 			Näyttelijän nimi:<input type="text" name="hakuNäyttelijä">

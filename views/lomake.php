@@ -1,3 +1,7 @@
+<?php
+require_once "../Elokuva-arkisto/kirjasto/toiminnot.php";
+saakoNahdaSivun();
+?>
 <!DOCTYPE html>
 
 <html>

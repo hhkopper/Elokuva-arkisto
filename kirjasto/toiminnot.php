@@ -20,3 +20,9 @@
 		require "views/$sivu";
 		exit();
 	}
+
+	function tulostaHakusana($hakusana) {
+		if(!empty($_GET[$hakusana])) {
+			return "Hakusanasi oli $hakusana";
+		}
+	}

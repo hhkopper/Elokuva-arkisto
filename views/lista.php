@@ -1,3 +1,7 @@
+<?php
+require_once "../Elokuva-arkisto/kirjasto/toiminnot.php";
+saakoNahdaSivun();
+?>
 <!DOCTYPE html>
 <html>
         <head>
@@ -5,7 +9,7 @@
         </head>
         <body>
                 <h1> Listauksen tulokset </h1>
-                <a href="pääsivu.php"> Palaa hakusivulle </a>
+                <a href="paasivu.php"> Palaa hakusivulle </a>
                 <?php if (!empty($_GET['hakuSana'])): ?>
                 <p> Hakusanasi oli <?php echo $_GET['hakuSana']; ?> </p>
                 <?php endif; ?>
