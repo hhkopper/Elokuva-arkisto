@@ -1,5 +1,6 @@
 <?php
 	function onkoKirjautunut() {
+		session_start();
 		if($_SESSION['kirjautunut'] == null) {
 			return false;
 		} else {
