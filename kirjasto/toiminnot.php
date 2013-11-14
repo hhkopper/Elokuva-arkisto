@@ -1,6 +1,4 @@
 <?php
-require_once "../logOut.php";
-
 	function onkoKirjautunut() {
 		if($_SESSION['kirjautunut'] == null) {
 			return false;
@@ -11,7 +9,14 @@ require_once "../logOut.php";
 
 	function saakoNahdaSivun() {
 		if(onkoKirjautunut() == false) {
-			logOut();
+			session_start();
+			unset($_SESSION['kirjautunut']);
+			header('Location:login.php');
 		}
 	}
-?>
+
+	function naytaNakyma($sivu, $data = array()) {
+		$data = (object)$data;
+		require "views/$sivu";
+		exit();
+	}

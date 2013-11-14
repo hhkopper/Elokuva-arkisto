@@ -1,7 +1,7 @@
 <?php
 
 require_once "kirjasto/kayttaja.php";
-require_once "kirjasto/näkymä.php";
+require_once "kirjasto/toiminnot.php";
 
 	if(empty($_POST["käyttäjätunnus"])) {
 		naytaNakyma("loging.php", array('virhe' => "Kirjautuminen ei onnistu! Käyttäjätunnus puuttuu."));

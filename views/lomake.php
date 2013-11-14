@@ -33,10 +33,10 @@
 			</textarea><br>
 			<input type="submit" value="Tallenna">
 		</form>
-		<form action="lomake.php" method="get">
+		<form action="annaLomake.php" method="get">
 			<input type="submit" value="Tyhjennä">
 		</form>
-		<form action="pääsivu.php" method="get">
+		<form action="paasivu.php" method="get">
 			<input type="submit" value="Peruuta">
 		</form>
 		<form action="pääsivu.php" method="get">

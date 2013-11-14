@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<h1> Elokuva-arkisto </h1>
-		<a href="lomake.php"> Lisää elokuva </a>
+		<a href="annaLomake.php"> Lisää elokuva </a>
 		<a href="logOut.php"> Kirjaudu ulos </a>
 		<p> Etsi elokuvia arkistostasi erilaisilla hakusanoilla tai näyttelijän tai ohjaajan nimellä. Vastaukseksi saat listan elokuvia, joihin hakusi liittyy.</p>
 		<form action="lista.php" method="get">
