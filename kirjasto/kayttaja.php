@@ -23,6 +23,10 @@ class Kayttaja {
 		}
 	}
 
+	public function getKayttajaId() {
+		return $this->idtunnus;
+	}
+
 	public function getKayttajatunnus() {
 		return $this->kayttajatunnus;
  	}

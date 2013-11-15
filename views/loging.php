@@ -16,7 +16,7 @@
 			<button type='submit'>Kirjaudu</button>
                 </form>
 		<p> Jos et ole vielä rekisteröitynyt, voit tehdä sen alla olevan linkin kautta!</p>
-		<form name="rekisteröidy" action="rekisteröityminen.php" method="get">
+		<form name="rekisteröidy" action="rekisteriLomake.php" method="get">
 			<input type="submit" value="Rekisteröidy">
 		</form>
 	</body>

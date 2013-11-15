@@ -1,6 +1,7 @@
 <?php
-	function onkoKirjautunut() {
-		session_start();
+	session_start();
+
+	function onkoKirjautunut() {		
 		if($_SESSION['kirjautunut'] == null) {
 			return false;
 		} else {
@@ -10,7 +11,6 @@
 
 	function saakoNahdaSivun() {
 		if(onkoKirjautunut() == false) {
-			session_start();
 			unset($_SESSION['kirjautunut']);
 			header('Location:login.php');
 		}

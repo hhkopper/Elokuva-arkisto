@@ -1,6 +1,4 @@
 <?php
-require_once "../Elokuva-arkisto/kirjasto/toiminnot.php";
-saakoNahdaSivun();
 ?>
 <!DOCTYPE html>
 
@@ -10,18 +8,18 @@ saakoNahdaSivun();
 	</head>
 	<body>
 		<h1>Lisää uusi elokuva</h1>
+		<?php if(!empty($data->virhe)): ?>
+		<?php echo $data->virhe; ?>
+		<?php endif; ?>
 		<p> Pakolliset osiot on merkkitty *-merkillä. </p>
-		<form action="pääsivu.php" method="post">
+		<form action="teeUusiLisays.php" method="post">
 			Nimi*: <input type ="text" name="nimi"><br><br>
 			Numero: <input type ="number" name="numero"><br><br>
 			Ikäraja: <input type ="number" name="ikaraja"><br><br>
 			Valmistusvuosi: <input type ="number" name="vuosi"><br><br>
-			Maa: <input type ="text" name="maa1"><br>
-				<input type ="text" name="maa2"><br>
-				<input type ="text" name="maa3"><br><br>
-			Kieli: <input type ="text" name="kieli1"><br>
-				<input type ="text" name="kieli2"><br>
-				<input type ="text" name="kieli3"><br><br>
+			Genre: <input type="text" name="genre"><br><br>
+			Maa: <input type ="text" name="maat"><br><br>
+			Kieli: <input type ="text" name="kielet"><br><br>
 			Kesto: <input type ="number" name="kesto"><br><br>
 			Ohjaaja: <input type ="text" name="ohjaaja1"><br>
 				<input type ="text" name="ohjaaja2"><br>

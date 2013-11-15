@@ -14,9 +14,11 @@ require_once "kirjasto/toiminnot.php";
 	$kayttajatunnus = $_POST["käyttäjätunnus"];
 	$salasana = $_POST["salasana"];
 
-	if(Kayttaja::getKayttaja($kayttajatunnus, $salasana) != null) {
+	$nykyinenKayttaja= Kayttaja::getKayttaja($kayttajatunnus, $salasana);
+
+	if($nykyinenKayttaja != null) {
 		session_start();
-		$_SESSION['kirjautunut'] = $kayttajatunnus;
+		$_SESSION['kirjautunut'] = $nykyinenKayttaja;
 		header('Location: paasivu.php');
 	} else {
 		naytaNakyma("loging.php", array('virhe' => "Kirjautuminen ei onnistu! Tarkista käyttäjätunnus ja salasana."));
