@@ -1,21 +1,22 @@
 <?php
 require_once "kirjasto/kayttaja.php";
+require_once "kirjasto/elokuva.php";
 require_once "kirjasto/toiminnot.php";
 
 	if(empty($_POST["nimi"])) {
 		naytaNakyma("lomake.php", array('virhe' => "Pakollisia merkintöjä puuttuu, tallentaminen ei onnistunut!"));
 	} else {
-		$numero = $_POST['numero'];
-		if (!is_numeric($numero)) $numero = null;
-		$kesto = $_POST['kesto'];
-		if (!is_numeric($kesto)) $kesto = null;
-		$ikaraja = $_POST['ikaraja'];
-		if(!is_numeric($ikaraja)) $ikaraja = null;
-		$vuosi = $_POST['vuosi'];
-		if(!is_numeric($vuosi)) $vuosi = null;
+		$numero = etsiNumero($_POST['numero']);
+		$kesto = etsiNumero($_POST['kesto']);
+		$ikaraja = etsiNumero($_POST['ikaraja']);
+		$vuosi = etsiNumero($_POST['vuosi']);
 		
-		$sql="INSERT INTO elokuva (nimi, numero, kesto, ikaraja, valmistusvuosi, genre, maat, kielet, kayttaja) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?) returning idtunnus";
-		$kysely = annaYhteys() ->prepare($sql);
-		$kysely->execute(array($_POST['nimi'], $numero, $kesto, $ikaraja, $vuosi, $_POST['genre'], $_POST['maat'], $_POST['kielet'], $_SESSION['kirjautunut']->getKayttajaId()));
+		elokuva::asetaElokuvanTiedot($numero, $kesto, $ikaraja, $vuosi);
+		elokuva::asetaHenkilo($_POST['nayttelija1']);
+		elokuva::asetaHenkilo($_POST['nayttelija2']);
+		elokuva::asetaHenkilo($_POST['nayttelija3']);
+		elokuva::asetaHenkilo($_POST['nayttelija4']);
+		elokuva::asetaHenkilo($_POST['nayttelija5']);
+
 		header('Location: paasivu.php');
 	}

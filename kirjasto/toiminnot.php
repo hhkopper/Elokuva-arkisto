@@ -27,3 +27,11 @@
 			return "Hakusanasi oli $hakusana";
 		}
 	}
+
+	function etsiNumero($numero) {
+		if (!is_numeric($numero)) {
+			return null;
+		} else {
+			return $numero;
+		}
+	}
