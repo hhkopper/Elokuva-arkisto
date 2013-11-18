@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once "kirjasto/kayttaja.php";
 require_once "kirjasto/elokuva.php";
 require_once "kirjasto/toiminnot.php";
@@ -11,12 +11,12 @@ require_once "kirjasto/toiminnot.php";
 		$ikaraja = etsiNumero($_POST['ikaraja']);
 		$vuosi = etsiNumero($_POST['vuosi']);
 		
-		elokuva::asetaElokuvanTiedot($numero, $kesto, $ikaraja, $vuosi);
-		elokuva::asetaHenkilo($_POST['nayttelija1']);
-		elokuva::asetaHenkilo($_POST['nayttelija2']);
-		elokuva::asetaHenkilo($_POST['nayttelija3']);
-		elokuva::asetaHenkilo($_POST['nayttelija4']);
-		elokuva::asetaHenkilo($_POST['nayttelija5']);
+		$elokuva = elokuva::asetaElokuvanTiedot($numero, $kesto, $ikaraja, $vuosi);
+		elokuva::asetaHenkilo($_POST['nayttelija1'], $elokuva);
+		elokuva::asetaHenkilo($_POST['nayttelija2'], $elokuva);
+		elokuva::asetaHenkilo($_POST['nayttelija3'], $elokuva);
+		elokuva::asetaHenkilo($_POST['nayttelija4'], $elokuva);
+		elokuva::asetaHenkilo($_POST['nayttelija5'], $elokuva);
 
 		header('Location: paasivu.php');
 	}

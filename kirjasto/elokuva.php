@@ -6,9 +6,10 @@ class Elokuva {
 		$sql="INSERT INTO elokuva (nimi, numero, kesto, ikaraja, valmistusvuosi, genre, maat, kielet, kayttaja) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?) returning idtunnus";
 		$kysely = annaYhteys() ->prepare($sql);
 		$kysely->execute(array($_POST['nimi'], $numero, $kesto, $ikaraja, $vuosi, $_POST['genre'], $_POST['maat'], $_POST['kielet'], $_SESSION['kirjautunut']->getKayttajaId()));
+		return $sql;
 	}
 
-	public function asetaHenkilo($nimi) {
+	public function asetaHenkilo($nimi, $elokuva) {
 		if($nimi != null) {
 
 			$sql="SELECT idtunnus FROM henkilo WHERE nimi LIKE ?";
@@ -19,7 +20,7 @@ class Elokuva {
 				self::asetaTietokantaanHenkilo($nimi);
 			} else {
 				foreach($kysely->fetchAll() as $tulos) {			
-					self::asetaRoolisuoritus($tulos);
+					self::asetaRoolisuoritus($tulos, $elokuva);
 				}
 			}
 		}
@@ -27,14 +28,13 @@ class Elokuva {
 	}
 
 	private function asetaTietokantaanHenkilo($nimi) {
-		$sql="INSERT INTO henkilo(nimi) VALUES (?) returning idtunnus;";
+		$sql="INSERT INTO henkilo(nimi) VALUES (?) returning idtunnus";
 		$kysely = annaYhteys() ->prepare($sql);
 		$kysely->execute(array($nimi));	
 		self::asetaRoolisuoritus($sql);
 	}
 	
-	private function asetaRoolisuoritus($tunnus) {
-		$elokuva = self::etsiElokuva($_POST['nimi']);
+	private function asetaRoolisuoritus($tunnus, $elokuva) {
 		$sql="INSERT INTO roolisuoritus(elokuva, nayttelija) VALUES (?, ?)";
 		$kysely = annaYhteys() ->prepare($sql);
 		$kysely->execute(array($elokuva, $tunnus));
