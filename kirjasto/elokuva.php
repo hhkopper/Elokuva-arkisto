@@ -27,7 +27,7 @@ class Elokuva {
 	}
 
 	private function asetaTietokantaanHenkilo($nimi) {
-		$sql="INSERT INTO henkilo(nimi) VALUES (?) returning idtunnus;";
+		$sql="INSERT INTO henkilo(nimi) VALUES (?) returning idtunnus";
 		$kysely = annaYhteys() ->prepare($sql);
 		$kysely->execute(array($nimi));	
 		self::asetaRoolisuoritus($sql);
