@@ -44,6 +44,6 @@ class Elokuva {
 		$sql="SELECT idtunnus FROM elokuva WHERE nimi LIKE ?";
 		$kysely = annaYhteys() ->prepare($sql);
 		$kysely->execute(array($nimi));
-		return $tulos = $kysely->fetch();
+		return $tulos = $kysely->FETCH_ORI_NEXT(0);
 	}
 }
