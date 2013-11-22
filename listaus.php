@@ -3,10 +3,15 @@ require_once "kirjasto/toiminnot.php";
 require_once "kirjasto/elokuva.php";
 saakoNahdaSivun();
 
-$hakuTulos = elokuva::haeElokuvat($_GET["hakuSana"]);
-if(empty($hakuTulos)) {
+$haettava = $_GET["hakuSana"];
+if(empty($haettava)) {
 	naytaNakyma("pääsivu.php", array('tyhjaHaku' => "Haku ei tuottanut tuloksia."));
 } else {
-	naytaNakyma("hakusivu.php", array('tulos' => $hakuTulos, 'hakusana' => $_GET['hakuSana']));
+	$hakuTulos = elokuva::haeElokuvat($haettava);
+	if(empty($hakuTulos)) {
+		naytaNakyma("pääsivu.php", array('tyhjaHaku' => "Haku ei tuottanut tuloksia."));
+	} else {
+		naytaNakyma("hakusivu.php", array('tulos' => $hakuTulos, 'hakusana' => $haettava));
+	}
 }
 ?>

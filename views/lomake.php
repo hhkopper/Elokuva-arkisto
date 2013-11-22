@@ -42,8 +42,5 @@
 		<form action="paasivu.php" method="get">
 			<input type="submit" value="Peruuta">
 		</form>
-		<form action="pääsivu.php" method="get">
-			<input type="submit" value="Poista">
-		</form>
 	</body>
 </html>

@@ -70,10 +70,35 @@ class Elokuva {
 	}
 
 	function haeElokuvat($hakusana) {
+		$hakusana = "%$hakusana%";
 		$sql="SELECT idtunnus, nimi, numero FROM elokuva WHERE nimi LIKE ?";
 		$kysely = annaYhteys() ->prepare($sql);
 		$kysely->execute(array($hakusana));
 		$tulos = $kysely->fetchAll(PDO::FETCH_ASSOC);
+		return $tulos;
+	}
+
+	function haeElokuvaMuokattavaksi($elokuvaId) {
+		$sql="SELECT * FROM elokuva WHERE idtunnus=?";
+		$kysely=annaYhteys()->prepare($sql);
+		$kysely->execute(array($elokuvaId));
+		$tulos = $kysely -> fetchObject();
+		return $tulos;
+	}
+	
+	function haeOhjaajatMuokattavaksi($elokuvaId) {
+		$sql="SELECT nimi FROM ohjaus INNER JOIN henkilo ON ohjaaja = henkilo.idtunnus WHERE elokuva=?";
+		$kysely=annaYhteys()->prepare($sql);
+		$kysely->execute(array($elokuvaId));
+		$tulos = $kysely -> fetchAll(PDO::FETCH_COLUMN);
+		return $tulos;
+	}
+	
+	function haeNayttelijatMuokattavaksi($elokuvaId) {
+		$sql="SELECT nimi FROM roolisuoritus INNER JOIN henkilo ON nayttelija = henkilo.idtunnus WHERE elokuva=?";
+		$kysely=annaYhteys()->prepare($sql);
+		$kysely->execute(array($elokuvaId));
+		$tulos = $kysely -> fetchAll(PDO::FETCH_COLUMN);
 		return $tulos;
 	}
 
@@ -88,7 +113,8 @@ class Elokuva {
 		$sql = "SELECT idtunnus FROM roolisuoritus WHERE elokuva=?";
 		$kysely = annaYhteys() -> prepare($sql);
 		$kysely -> execute(array($elokuvanId));
-		return $tulos = $kysely -> fetchAll(PDO::fetch_assoc);
+		$tulos = $kysely -> fetchAll(PDO::FETCH_ASSOC);
+		return $tulos;
 	}
 
 	private function poistaRoolitukset($elokuvanId) {
