@@ -9,7 +9,7 @@
 		<a href="listaus.php?hakuSana=<?php echo $data->hakusana ?>"> Palaa </a>
 		<?php var_dump($data->tulos); ?>
 		<p> Pakolliset osiot on merkkitty *-merkillä. </p>
-		<form action="tallennaMuutokset.php" method="post">
+		<form action="muokkaa.php" method="post">
 			Nimi*: <input type ="text" value="<?php echo $data->tulos->nimi?>" name="nimi"><br><br>
 			Numero: <input type ="number" value="<?php echo $data->tulos->numero?>" name="numero"><br><br>
 			Ikäraja: <input type ="number" value="<?php echo $data->tulos->ikaraja?>" name="ikaraja"><br><br>

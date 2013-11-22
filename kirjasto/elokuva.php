@@ -117,7 +117,7 @@ class Elokuva {
 		return $tulos;
 	}
 
-	private function poistaRoolitukset($elokuvanId) {
+	function poistaRoolitukset($elokuvanId) {
 		$poistettavat = self::etsiPoistettavatRoolitukset($elokuvanId);
 		foreach($poistettavat as $poistettava => $id ) {
 			$sql = "DELETE FROM roolisuoritus WHERE idtunnus=?";
