@@ -1,7 +1,7 @@
 <?php
+require_once "kirjasto/kayttaja.php";
 require_once "kirjasto/toiminnot.php";
 require_once "kirjasto/elokuva.php";
-require_once "kirjasto/kayttaja.php";
 saakoNahdaSivun();
 
 $haettava = $_GET["hakuSana"];
