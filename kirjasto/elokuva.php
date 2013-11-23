@@ -104,6 +104,7 @@ class Elokuva {
 
 	function poistaElokuva($elokuvanId) {
 		self::poistaRoolitukset($elokuvanId);
+		self::poistaOhjaukset($elokuvanId);
 		$sql = "DELETE FROM elokuva WHERE idtunnus=?";
 		$kysely = annaYhteys() -> prepare($sql);
 		$kysely -> execute(array($elokuvanId));
@@ -117,12 +118,35 @@ class Elokuva {
 		return $tulos;
 	}
 
-	function poistaRoolitukset($elokuvanId) {
+	private function etsiPoistettavatOhjaukset($elokuvanId) {
+		$sql = "SELECT idtunnus FROM ohjaus WHERE elokuva=?";
+		$kysely = annaYhteys() -> prepare($sql);
+		$kysely -> execute(array($elokuvanId));
+		$tulos = $kysely -> fetchAll(PDO::FETCH_ASSOC);
+		return $tulos;
+	}
+
+	private function poistaRoolitukset($elokuvanId) {
 		$poistettavat = self::etsiPoistettavatRoolitukset($elokuvanId);
 		foreach($poistettavat as $poistettava => $id ) {
 			$sql = "DELETE FROM roolisuoritus WHERE idtunnus=?";
 			$kysely = annaYhteys() ->prepare($sql);
 			$kysely -> execute(array($id['idtunnus']));
 		}
+	}
+
+	private function poistaOhjaukset($elokuvaId) {
+		$poistettavat = self::etsiPoistettavatOhjaukset($elokuvaId);
+		foreach($poistettavat as $poistettava => $id) {
+			$sql = "DELETE FROM ohjaus WHERE idtunnus=?";
+			$kysely = annaYhteys() ->prepare($sql);
+			$kysely -> execute(array($id['idtunnus']));
+		}
+	}
+
+	function tallennaMuokatutElokuvanTiedot($numero, $ikaraja, $vuosi, $kesto, $elokuvanId) {
+		$sql = "UPDATE elokuva SET nimi=?, numero=?, kesto=?, ikaraja=?, valmistusvuosi=?, genre=?, maat=?, kielet=? WHERE idtunnus=?";
+		$kysely = annaYhteys() -> prepare($sql);
+		$kysely -> execute(array($_POST['nimi'], $numero, $kesto, $ikaraja, $vuosi, $_POST['genre'], $_POST['maat'], $_POST['kielet'], $elokuvanId));
 	}
 }
