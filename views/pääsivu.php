@@ -11,9 +11,7 @@ require_once "kirjasto/kayttaja.php";
 		<a href="annaLomake.php"> Lisää elokuva </a>
 		<a href="logOut.php"> Kirjaudu ulos </a>
 		<p> Etsi elokuvia arkistostasi erilaisilla hakusanoilla tai näyttelijän tai ohjaajan nimellä. Vastaukseksi saat listan elokuvia, joihin hakusi liittyy.</p>
-		<?php session_start(); ?>
 
-		<?php print_r($_SESSION['kirjautunut'] -> getKayttajaId());?>
 		<?php if(!empty($data->tyhjaHaku)): ?>
 		<?php echo $data->tyhjaHaku; ?>
 		<?php endif; ?>

@@ -2,6 +2,15 @@
 require_once "yhteys.php";
 class Elokuva {
 
+	function haeAakkosjarjestyksessa() {
+		$sql="SELECT nimi, numero FROM elokuva WHERE kayttaja=?  ORDER BY nimi ASC";
+		$kysely = annaYhteys() -> prepare($sql);
+		$kysely -> execute(array($_SESSION['kirjautunut']->getKayttajaId()));
+		$tulokset = $kysely -> fetchAll(PDO::FETCH_ASSOC);
+		return $tulokset;
+	}
+
+
 	function asetaElokuvanTiedot($numero, $kesto, $ikaraja, $vuosi) {
 		$sql="INSERT INTO elokuva (nimi, numero, kesto, ikaraja, valmistusvuosi, genre, maat, kielet, kayttaja) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?) returning idtunnus";
 		$kysely = annaYhteys() ->prepare($sql);
