@@ -7,7 +7,7 @@
 	<body>
 		<h1> Muokkaa elokuvan tietoja </h1>
 		<a href="listaus.php?hakuSana=<?php echo $data->hakusana ?>"> Palaa </a>
-		<?php var_dump($data->tulos); ?>
+
 		<p> Pakolliset osiot on merkkitty *-merkillä. </p>
 		<form action="tallennaMuutokset.php" method="post">
 			Nimi*: <input type ="text" value="<?php echo $data->tulos->nimi?>" name="nimi"><br><br>

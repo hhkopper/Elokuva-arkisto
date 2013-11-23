@@ -36,7 +36,7 @@ require_once "kirjasto/kayttaja.php";
 			<input type="submit" value="Listaa aakkosjärjestyksessä"><br>
 		</form>
 		
-		<form>
+		<form action="listausNumerot.php" method="get">
 			<input type="submit" value="Listaa numerojärjestyksessä"><br>
 		</form>
 	</body>

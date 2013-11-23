@@ -10,6 +10,14 @@ class Elokuva {
 		return $tulokset;
 	}
 
+	function haeNumerojarjestyksessa() {
+		$sql="SELECT nimi, numero FROM elokuva WHERE kayttaja=? ORDER BY numero ASC";
+		$kysely = annaYhteys() -> prepare($sql);
+		$kysely -> execute(array($_SESSION['kirjautunut']->getKayttajaId()));
+		$tulokset = $kysely -> fetchAll(PDO::FETCH_ASSOC);
+		return $tulokset;
+	}
+
 
 	function asetaElokuvanTiedot($numero, $kesto, $ikaraja, $vuosi) {
 		$sql="INSERT INTO elokuva (nimi, numero, kesto, ikaraja, valmistusvuosi, genre, maat, kielet, kayttaja) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?) returning idtunnus";
@@ -169,7 +177,7 @@ class Elokuva {
 	}
 
 	function tallennaMuokatutNayttelijat($nayttelija1, $nayttelija2, $nayttelija3, $nayttelija4, $nayttelija5, $elokuvaId) {
-		self::poistaRoolitukset($elokuvanId);
+		self::poistaRoolitukset($elokuvaId);
 		self::asetaNayttelija($nayttelija1, $elokuvaId);
 		self::asetaNayttelija($nayttelija2, $elokuvaId);
 		self::asetaNayttelija($nayttelija3, $elokuvaId);
