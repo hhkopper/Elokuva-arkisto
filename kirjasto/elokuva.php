@@ -71,9 +71,9 @@ class Elokuva {
 
 	function haeElokuvat($hakusana) {
 		$hakusana = "%$hakusana%";
-		$sql="SELECT idtunnus, nimi, numero FROM elokuva WHERE nimi LIKE ?";
+		$sql="SELECT idtunnus, nimi, numero FROM elokuva WHERE nimi LIKE ? AND kayttaja=?";
 		$kysely = annaYhteys() ->prepare($sql);
-		$kysely->execute(array($hakusana));
+		$kysely->execute(array($hakusana, $_SESSION['kirjautunut]->getKayttajaId()));
 		$tulos = $kysely->fetchAll(PDO::FETCH_ASSOC);
 		return $tulos;
 	}
@@ -148,5 +148,23 @@ class Elokuva {
 		$sql = "UPDATE elokuva SET nimi=?, numero=?, kesto=?, ikaraja=?, valmistusvuosi=?, genre=?, maat=?, kielet=? WHERE idtunnus=?";
 		$kysely = annaYhteys() -> prepare($sql);
 		$kysely -> execute(array($_POST['nimi'], $numero, $kesto, $ikaraja, $vuosi, $_POST['genre'], $_POST['maat'], $_POST['kielet'], $elokuvanId));
+	}
+
+	function tallennaMuokatutOhjaajat($ohjaaja1, $ohjaaja2, $ohjaaja3, $ohjaaja4, $ohjaaja5, $elokuvanId) {
+		self::poistaOhjaukset($elokuvanId);
+		self::asetaOhjaaja($ohjaaja1, $elokuvanId);
+		self::asetaOhjaaja($ohjaaja2, $elokuvanId);
+		self::asetaOhjaaja($ohjaaja3, $elokuvanId);
+		self::asetaOhjaaja($ohjaaja4, $elokuvanId);
+		self::asetaOhjaaja($ohjaaja5, $elokuvanId);
+	}
+
+	function tallennaMuokatutNayttelijat($nayttelija1, $nayttelija2, $nayttelija3, $nayttelija4, $nayttelija5, $elokuvaId) {
+		self::poistaRoolitukset($elokuvanId);
+		self::asetaNayttelija($nayttelija1, $elokuvaId);
+		self::asetaNayttelija($nayttelija2, $elokuvaId);
+		self::asetaNayttelija($nayttelija3, $elokuvaId);
+		self::asetaNayttelija($nayttelija4, $elokuvaId);
+		self::asetaNayttelija($nayttelija5, $elokuvaId);
 	}
 }
