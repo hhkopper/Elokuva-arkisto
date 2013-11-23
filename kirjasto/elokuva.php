@@ -73,7 +73,7 @@ class Elokuva {
 		$hakusana = "%$hakusana%";
 		$sql="SELECT idtunnus, nimi, numero FROM elokuva WHERE nimi LIKE ? AND kayttaja=?";
 		$kysely = annaYhteys() ->prepare($sql);
-		$kysely->execute(array($hakusana, $_SESSION['kirjautunut]->getKayttajaId()));
+		$kysely->execute(array($hakusana, $_SESSION['kirjautunut']->getKayttajaId()));
 		$tulos = $kysely->fetchAll(PDO::FETCH_ASSOC);
 		return $tulos;
 	}
