@@ -18,6 +18,16 @@ class Elokuva {
 		return $tulos;
 	}
 
+
+	function haeElokuvaOhjaajanMukaan($nimi) {
+		$henkiloId = self::etsiHenkilo($nimi);
+		if(!empty($henkiloId)) {
+			$elokuvat = self::etsiOhjaukset($henkiloId);
+			return $elokuvat;
+		}
+		return null;
+	}
+
 	function haeElokuvatNayttelijanMukaan($nimi) {
 		$henkiloId = self::etsiHenkilo($nimi);
 		if(!empty($henkiloId)) {
@@ -25,6 +35,14 @@ class Elokuva {
 			return $elokuvat;
 		}
 		return null;
+	}
+
+	private function etsiOhjaukset($id) {
+		$sql = "SELECT elokuva FROM ohjaus WHERE ohjaaja=?";
+		$kysely = annaYhteys() -> prepare($sql);
+		$kysely -> execute(array($id));
+		$tulokset = $kysely -> fetchAll(PDO::FETCH_ASSOC);
+		return $tulokset;
 	}
 
 	private function etsiRoolitukset($id) {

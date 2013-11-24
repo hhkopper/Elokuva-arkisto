@@ -11,6 +11,7 @@ require_once "kirjasto/kayttaja.php";
 		<a href="annaLomake.php"> Lisää elokuva </a>
 		<a href="logOut.php"> Kirjaudu ulos </a>
 		<p> Etsi elokuvia arkistostasi erilaisilla hakusanoilla tai näyttelijän tai ohjaajan nimellä. Vastaukseksi saat listan elokuvia, joihin hakusi liittyy.</p>
+		<p> Hae tietyllä hakusanalla tai siirry aakkosjärjestyslistaan, niin pääset tarkastelemaan elokuvien tietoja ja muokkaamaan niitä. </p>
 
 		<?php if(!empty($data->tyhjaHaku)): ?>
 		<?php echo $data->tyhjaHaku; ?>
@@ -25,7 +26,7 @@ require_once "kirjasto/kayttaja.php";
 			<input type="submit" value="Hae"><br>
 		</form>
 
-		<form>
+		<form action="listausOhjaajat.php" method="get">
 			Ohjaajan nimi: <input type="text" name="hakuOhjaaja">
 			<input type="submit" value="Hae"><br>
 		</form>
