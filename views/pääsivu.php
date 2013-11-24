@@ -19,23 +19,23 @@ require_once "kirjasto/kayttaja.php";
 			Hakusana: <input type="text" name="hakuSana">
 			<input type="submit" value="Hae"><br>
 		</form>
-		
-		<form>
-			Näyttelijän nimi:<input type="text" name="hakuNäyttelijä">
+
+		<form action="listausNayttelijat.php" method="get">
+			Näyttelijän nimi:<input type="text" name="hakuNayttelija">
 			<input type="submit" value="Hae"><br>
 		</form>
-		
+
 		<form>
 			Ohjaajan nimi: <input type="text" name="hakuOhjaaja">
 			<input type="submit" value="Hae"><br>
 		</form>
-		
+
 		<p> Voit myös listata elokuvasi aakkos- tai numerojärjestyksessä.</p>
-			
+
 		<form action="listausAakkoset.php" method="get">
 			<input type="submit" value="Listaa aakkosjärjestyksessä"><br>
 		</form>
-		
+
 		<form action="listausNumerot.php" method="get">
 			<input type="submit" value="Listaa numerojärjestyksessä"><br>
 		</form>

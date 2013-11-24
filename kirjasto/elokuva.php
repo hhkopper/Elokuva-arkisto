@@ -2,8 +2,49 @@
 require_once "yhteys.php";
 class Elokuva {
 
+	function haeElokuvanNumero($id, $kayttaja) {
+		$sql= "SELECT numero FROM elokuva WHERE idtunnus=? AND kayttaja=?";
+		$kysely = annaYhteys() -> prepare($sql);
+		$kysely -> execute(array($id, $kayttaja));
+		$tulos = $kysely -> fetchColumn();
+		return $tulos;
+	}
+
+	function haeElokuvanNimi($id, $kayttaja) {
+		$sql="SELECT nimi FROM elokuva WHERE idtunnus=? AND kayttaja=?";
+		$kysely = annaYhteys() -> prepare($sql);
+		$kysely -> execute(array($id, $kayttaja));
+		$tulos = $kysely -> fetchColumn();
+		return $tulos;
+	}
+
+	function haeElokuvatNayttelijanMukaan($nimi) {
+		$henkiloId = self::etsiHenkilo($nimi);
+		if(!empty($henkiloId)) {
+			$elokuvat = self::etsiRoolitukset($henkiloId);
+			return $elokuvat;
+		}
+		return null;
+	}
+
+	private function etsiRoolitukset($id) {
+		$sql="SELECT elokuva FROM roolisuoritus WHERE nayttelija=?";
+		$kysely = annaYhteys() -> prepare($sql);
+		$kysely -> execute(array($id));
+		$tulokset = $kysely -> fetchAll(PDO::FETCH_ASSOC);
+		return $tulokset;
+	}
+
+	private function etsiHenkilo($nimi) {
+		$sql="SELECT idtunnus FROM henkilo WHERE nimi LIKE ?";
+		$kysely = annaYhteys() -> prepare($sql);
+		$kysely -> execute(array($nimi));
+		$henkiloId = $kysely -> fetchColumn();
+		return $henkiloId;
+	}
+
 	function haeAakkosjarjestyksessa() {
-		$sql="SELECT nimi, numero FROM elokuva WHERE kayttaja=?  ORDER BY nimi ASC";
+		$sql="SELECT idtunnus, nimi, numero FROM elokuva WHERE kayttaja=?  ORDER BY nimi ASC";
 		$kysely = annaYhteys() -> prepare($sql);
 		$kysely -> execute(array($_SESSION['kirjautunut']->getKayttajaId()));
 		$tulokset = $kysely -> fetchAll(PDO::FETCH_ASSOC);
@@ -11,7 +52,7 @@ class Elokuva {
 	}
 
 	function haeNumerojarjestyksessa() {
-		$sql="SELECT nimi, numero FROM elokuva WHERE kayttaja=? ORDER BY numero ASC";
+		$sql="SELECT idtunnus, nimi, numero FROM elokuva WHERE kayttaja=? ORDER BY numero ASC";
 		$kysely = annaYhteys() -> prepare($sql);
 		$kysely -> execute(array($_SESSION['kirjautunut']->getKayttajaId()));
 		$tulokset = $kysely -> fetchAll(PDO::FETCH_ASSOC);
