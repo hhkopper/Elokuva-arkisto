@@ -34,4 +34,31 @@ class Kayttaja {
 	public function getSalasana() {
 		return $this->salasana;
 	}
+	
+	function kayttajatunnusVapaa($tunnus) {
+		$sql= "SELECT kayttajatunnus FROM kayttaja WHERE kayttajatunnus=?";
+		$kysely = annaYhteys() -> prepare($sql);
+		$kysely -> execute(array($tunnus));
+		$tulos = $kysely->fetchColumn();
+		
+		if (!empty($tulos)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	function luoUusiKayttaja($tunnus, $salasana) {
+		$sql = "INSERT INTO kayttaja (kayttajatunnus, salasana) VALUES (?,?)";
+		$kysely = annaYhteys() -> prepare($sql);
+		$kysely -> execute(array($tunnus, $salasana));
+	}
+	
+	function haeKayttajaTiedot($id) {
+		$sql = "SELECT kayttajatunnus, salasana FROM kayttaja WHERE idtunnus=?";
+		$kysely = annaYhteys() -> prepare($sql);
+		$kysely -> execute(array($id));
+		$tulos = $kysely->fetchAll(PDO::FETCH_ASSOC);
+		return $tulos;
+	}
 }

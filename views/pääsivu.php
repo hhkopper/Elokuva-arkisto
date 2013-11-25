@@ -8,7 +8,11 @@ require_once "kirjasto/kayttaja.php";
 	</head>
 	<body>
 		<h1> Elokuva-arkisto </h1>
+		<?php session_start(); ?>
+		<?php $kayttajatunnus = $_SESSION['kirjautunut']->getKayttajatunnus(); ?>
+		<p> Hei <?php echo $kayttajatunnus; ?>! </p>
 		<a href="annaLomake.php"> Lisää elokuva </a>
+		<a href="naytaOmatTiedot.php"> Omat tiedot </a>
 		<a href="logOut.php"> Kirjaudu ulos </a>
 		<p> Etsi elokuvia arkistostasi erilaisilla hakusanoilla tai näyttelijän tai ohjaajan nimellä. Vastaukseksi saat listan elokuvia, joihin hakusi liittyy.</p>
 		<p> Hae tietyllä hakusanalla tai siirry aakkosjärjestyslistaan, niin pääset tarkastelemaan elokuvien tietoja ja muokkaamaan niitä. </p>

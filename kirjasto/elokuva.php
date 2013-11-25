@@ -2,63 +2,20 @@
 require_once "yhteys.php";
 class Elokuva {
 
-	function haeElokuvanNumero($id, $kayttaja) {
-		$sql= "SELECT numero FROM elokuva WHERE idtunnus=? AND kayttaja=?";
+	function haeNimellaNayttelijat($nimi) {
+		$sql = "SELECT elokuva.nimi, elokuva.numero FROM elokuva JOIN roolisuoritus ON roolisuoritus.elokuva=elokuva.idtunnus JOIN henkilo ON nayttelija = henkilo.idtunnus WHERE henkilo.nimi=? and kayttaja=?";
 		$kysely = annaYhteys() -> prepare($sql);
-		$kysely -> execute(array($id, $kayttaja));
-		$tulos = $kysely -> fetchColumn();
+		$kysely -> execute(array($nimi, $_SESSION['kirjautunut']->getKayttajaId()));
+		$tulos = $tulokset = $kysely -> fetchAll(PDO::FETCH_ASSOC);
 		return $tulos;
 	}
-
-	function haeElokuvanNimi($id, $kayttaja) {
-		$sql="SELECT nimi FROM elokuva WHERE idtunnus=? AND kayttaja=?";
+	
+	function haeNimellaOhjaajat($nimi) {
+		$sql = "SELECT elokuva.nimi, elokuva.numero FROM elokuva JOIN ohjaus ON ohjaus.elokuva=elokuva.idtunnus JOIN henkilo ON ohjaaja = henkilo.idtunnus WHERE henkilo.nimi=? and kayttaja=?";
 		$kysely = annaYhteys() -> prepare($sql);
-		$kysely -> execute(array($id, $kayttaja));
-		$tulos = $kysely -> fetchColumn();
+		$kysely -> execute(array($nimi, $_SESSION['kirjautunut']->getKayttajaId()));
+		$tulos = $tulokset = $kysely -> fetchAll(PDO::FETCH_ASSOC);
 		return $tulos;
-	}
-
-
-	function haeElokuvaOhjaajanMukaan($nimi) {
-		$henkiloId = self::etsiHenkilo($nimi);
-		if(!empty($henkiloId)) {
-			$elokuvat = self::etsiOhjaukset($henkiloId);
-			return $elokuvat;
-		}
-		return null;
-	}
-
-	function haeElokuvatNayttelijanMukaan($nimi) {
-		$henkiloId = self::etsiHenkilo($nimi);
-		if(!empty($henkiloId)) {
-			$elokuvat = self::etsiRoolitukset($henkiloId);
-			return $elokuvat;
-		}
-		return null;
-	}
-
-	private function etsiOhjaukset($id) {
-		$sql = "SELECT elokuva FROM ohjaus WHERE ohjaaja=?";
-		$kysely = annaYhteys() -> prepare($sql);
-		$kysely -> execute(array($id));
-		$tulokset = $kysely -> fetchAll(PDO::FETCH_ASSOC);
-		return $tulokset;
-	}
-
-	private function etsiRoolitukset($id) {
-		$sql="SELECT elokuva FROM roolisuoritus WHERE nayttelija=?";
-		$kysely = annaYhteys() -> prepare($sql);
-		$kysely -> execute(array($id));
-		$tulokset = $kysely -> fetchAll(PDO::FETCH_ASSOC);
-		return $tulokset;
-	}
-
-	private function etsiHenkilo($nimi) {
-		$sql="SELECT idtunnus FROM henkilo WHERE nimi LIKE ?";
-		$kysely = annaYhteys() -> prepare($sql);
-		$kysely -> execute(array($nimi));
-		$henkiloId = $kysely -> fetchColumn();
-		return $henkiloId;
 	}
 
 	function haeAakkosjarjestyksessa() {

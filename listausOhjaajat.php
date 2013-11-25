@@ -6,12 +6,12 @@ saakoNahdaSivun();
 
 $haettava = $_GET["hakuOhjaaja"];
 if(empty($haettava)) {
-	naytaNakyma("pääsivu.php", array('tyhjaHaku'=>"Haku ei tuottanut tuloksia."));
+	naytaNakyma("pääsivu.php", array('tyhjaHaku'=>"Haku ei tuottanut tuloksia tai hakusana puuttuu."));
 } else {
-	$elokuvat = elokuva::haeElokuvaOhjaajanMukaan($haettava);
-	if($elokuvat != null) {
-		naytaNakyma("hakuNayttelija.php", array('tulos' => $elokuvat, 'hakusana' => $haettava, 'kayttaja' => $_SESSION['kirjautunut']->getKayttajaId()));
+	$elokuvat = elokuva::haeNimellaOhjaajat($haettava);
+	if(empty($elokuvat)) {
+		naytaNakyma("pääsivu.php", array('tyhjaHaku'=> "Haku ei tuottanut yhtään tulosta tai hakusana puuttuu."));
 	} else {
-		naytaNakyma("pääsivu.php", array('tyhjaHaku' => "Haku ei tuottanut yhtään tulosta, koska tietokannassa ei ole vastaavaa ohjaajan nimeä."));
+		naytaNakyma("hakuNimella.php", array('elokuvat' => $elokuvat, 'hakusana'=>$haettava));
 	}
 }

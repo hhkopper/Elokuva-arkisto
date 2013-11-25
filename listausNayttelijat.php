@@ -8,10 +8,10 @@ $haettava = $_GET["hakuNayttelija"];
 if(empty($haettava)) {
 	naytaNakyma("pääsivu.php", array('tyhjaHaku'=> "Haku ei tuottanut yhtään tulosta tai hakusana puuttuu."));
 } else {
-	$elokuvat = elokuva::haeElokuvatNayttelijanMukaan($haettava);
-	if($elokuvat != null) {
-		naytaNakyma("hakuNayttelija.php", array('tulos' => $elokuvat, 'hakusana' => $haettava, 'kayttaja' => $_SESSION['kirjautunut']->getKayttajaId()));
+	$elokuvat = elokuva::haeNimellaNayttelijat($haettava);
+	if(empty($elokuvat)) {
+		naytaNakyma("pääsivu.php", array('tyhjaHaku'=> "Haku ei tuottanut yhtään tulosta tai hakusana puuttuu."));
 	} else {
-		naytaNakyma("pääsivu.php", array('tyhjaHaku' => "Haku ei tuottanut yhtään tulosta, koska tietokanta ei sisällä vastaavaa näyttelijän nimeä."));
+		naytaNakyma("hakuNimella.php", array('elokuvat' => $elokuvat, 'hakusana'=>$haettava));
 	}
 }

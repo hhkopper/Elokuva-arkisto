@@ -6,13 +6,14 @@
 	<body>
 		<h1> Rekisteröidy </h1>
 		<p> Rekisteröitymiseen vaaditaan käyttäjä tunnus, salasana ja oman arkiston nimeäminen.</p>
-		<form>
-			Käyttäjätunnus: <input type="text" name="käyttäjätunnus"><br>
+		
+		<?php if(!empty($data->virhe)): ?>
+		<?php echo $data->virhe; ?>
+		<?php endif; ?>
+		<form action="rekisteroi.php" method="post">
+			Käyttäjätunnus: <input type="text" value="<?php if (isset($data->lomake->kayttajatunnus)) echo $data->lomake->kayttajatunnus; ?>" name="kayttajatunnus"><br>
 			Salasana: <input type="password" name="salasana"><br>
-			Salasana: <input type="password" name="salasanaVahva"><br>
-			
-		</form>
-		<form name="valmis" action="pääsivu.php" method="post">
+			Vahvista salasana: <input type="password" name="salasanaVahva"><br>
 			<input type="submit" value="Valmis">
 		</form>
 		<form action="palaaAlkuun.php" method="get">
