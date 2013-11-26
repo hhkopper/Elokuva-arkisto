@@ -17,7 +17,10 @@
                 </form>
 		<p> Jos et ole vielä rekisteröitynyt, voit tehdä sen alla olevan linkin kautta!</p>
 		<form action="rekisteroityminen.php" method="get">
-			<input type="submit" value="Rekisteröidy">
+			<input type="submit" value="Rekisteröidy"><br>
 		</form>
+		<footer>
+			Jos ilmenee ongelmia, ota yhteyttä ylläpitäjään: hanna.kopperi@helsinki.fi
+		</footer>
 	</body>
 </html>

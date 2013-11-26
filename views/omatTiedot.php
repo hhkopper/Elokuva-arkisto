@@ -13,7 +13,8 @@
 		<form>
 			Vanha salasana: <input type="password" name="vanha"><br>
 			Uusi salasana: <input type="password" name="uusi"><br>
-			Vahvista uusi salasana: <input type="password" name="uusiVahva">
+			Vahvista uusi salasana: <input type="password" name="uusiVahva"><br>
+			<input type="submit" value="Vaihda">
 		</form>
 	</body>
 </html>

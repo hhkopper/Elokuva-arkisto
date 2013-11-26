@@ -5,7 +5,7 @@
 		<title> Muokkaus </title>
 	</head>
 	<body>
-		<?php print_r($data->tulos); ?>
+
 		<h1> Muokkaa elokuvan tietoja </h1>
 		<?php $hakusana = $data ->hakusana;?>
 		<?php if ($hakusana != false): ?>
