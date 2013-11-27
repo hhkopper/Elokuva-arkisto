@@ -15,7 +15,7 @@ genre varchar(100),
 maat varchar(100),
 kielet varchar(100),
 kayttaja integer not null,
-foreign key(kayttaja) references kayttaja
+foreign key(kayttaja) references kayttaja ON DELETE CASCADE
 );
 
 create table henkilo(
@@ -27,7 +27,7 @@ create table roolisuoritus (
 idtunnus serial primary key,
 elokuva integer,
 nayttelija integer,
-foreign key(elokuva) references elokuva,
+foreign key(elokuva) references elokuva ON DELETE CASCADE,
 foreign key(nayttelija) references henkilo
 );
 
@@ -35,6 +35,6 @@ create table ohjaus(
 idtunnus serial primary key,
 elokuva integer,
 ohjaaja integer,
-foreign key(elokuva) references elokuva,
+foreign key(elokuva) references elokuva ON DELETE CASCADE,
 foreign key(ohjaaja) references henkilo
 );

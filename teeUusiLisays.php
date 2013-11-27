@@ -3,8 +3,9 @@ require_once "kirjasto/kayttaja.php";
 require_once "kirjasto/elokuva.php";
 require_once "kirjasto/toiminnot.php";
 
+	$lomake = (object)$_POST;
 	if(empty($_POST["nimi"])) {
-		$lomake = (object)$_POST;
+		
 		
 		naytaNakyma("lomake.php", array('virhe' => "Pakollisia merkintöjä puuttuu, tallentaminen ei onnistunut!", "lomake" => $lomake));
 	} else {
@@ -12,6 +13,10 @@ require_once "kirjasto/toiminnot.php";
 		$kesto = etsiNumero($_POST['kesto']);
 		$ikaraja = etsiNumero($_POST['ikaraja']);
 		$vuosi = etsiNumero($_POST['vuosi']);
+		
+		if(($numero == null and $_POST['numero'] != '') OR ($ikaraja == null and $_POST['ikaraja'] != '')  OR ($vuosi == null and $_POST['valmistusvuosi'] != '') OR ($kesto == null and $_POST['kesto'] != '')) {
+			naytaNakyma("lomake.php", array('virhe' => "Numero, ikäraja, valmistusvuosi ja kesto täytyy ilmaista numeroilla.", "lomake" => $lomake));
+		}
 		
 		$elokuva = elokuva::asetaElokuvanTiedot($numero, $kesto, $ikaraja, $vuosi);
 		elokuva::asetaNayttelija($_POST['nayttelija1'], $elokuva);

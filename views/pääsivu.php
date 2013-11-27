@@ -1,5 +1,4 @@
 <?php
-require_once "kirjasto/kayttaja.php";
 ?><!DOCTYPE html>
 
 <html>
@@ -8,7 +7,6 @@ require_once "kirjasto/kayttaja.php";
 	</head>
 	<body>
 		<h1> Elokuva-arkisto </h1>
-		<?php session_start(); ?>
 		<?php $kayttajatunnus = $_SESSION['kirjautunut']->getKayttajatunnus(); ?>
 		<p> Hei <?php echo $kayttajatunnus; ?>! </p>
 		<a href="annaLomake.php"> Lisää elokuva </a>

@@ -200,4 +200,10 @@ class Elokuva {
 		self::asetaNayttelija($nayttelija4, $elokuvaId);
 		self::asetaNayttelija($nayttelija5, $elokuvaId);
 	}
+	
+	function poistaKaikkiKayttajanElokuvat($kayttajaId) {
+		$sql = "DELETE FROM elokuva WHERE kayttaja=?";
+		$kysely = annaYhteys() -> prepare($sql);
+		$kysely -> execute(array($kayttajaId));
+	}
 }

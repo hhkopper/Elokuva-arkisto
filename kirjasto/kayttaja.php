@@ -68,4 +68,10 @@ class Kayttaja {
 		$kysely = annaYhteys() -> prepare($sql);
 		$kysely -> execute(array($salasana, $id));
 	}
+	
+	function poistaKayttaja($id) {
+		 $sql = "DELETE FROM kayttaja WHERE idtunnus=?";
+		 $kysely = annaYhteys() -> prepare($sql);
+		 $kysely -> execute(array($id));
+	}
 }

@@ -11,7 +11,11 @@
 		<?php if ($hakusana != false): ?>
 		<a href="listaus.php?hakuSana=<?php echo $data->hakusana ?>"> Palaa </a>
 		<?php else: ?>
-		<a href="listausAakkoset.php"> Palaa </a>
+		<a href="listausAakkoset.php"> Palaa </a><br><br>
+		<?php endif; ?>
+		
+		<?php if(!empty($data->virhe)): ?>
+		<?php echo $data->virhe; ?>
 		<?php endif; ?>
 
 		<p> Pakolliset osiot on merkkitty *-merkillä. </p>
@@ -40,6 +44,7 @@
 				<input type ="text" value="<?php if (isset($data->nayttelijat[3])) echo $data->nayttelijat[3]; ?>" name="nayttelija[]"><br>
 				<input type ="text" value="<?php if (isset($data->nayttelijat[4])) echo $data->nayttelijat[4]; ?>" name="nayttelija[]"><br><br>
 			<input type="hidden" value="<?php echo $data->tulos->idtunnus?>" name="talletettava">
+			<input type="hidden" value="<?php echo $data->hakusana?>" name="hakusana">
 			<input type="submit" value="Tallenna">
 		</form>
 

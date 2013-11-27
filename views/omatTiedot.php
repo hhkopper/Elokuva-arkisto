@@ -20,5 +20,11 @@
 			Vahvista uusi salasana: <input type="password" name="uusiVahva"><br>
 			<input type="submit" value="Vaihda">
 		</form>
+		
+		<h3> Poista käyttäjätili </h3>
+		<p> Tämän linkin avulla voit poistaa koko käyttäjätilisi. Tällöin kaikki tietosi poistetaan ja tietokantasi tyhjennetään. </p>
+		<form action="poistaKayttaja.php" method="post">
+			<input type="submit" value="Poista käyttäjätili" >
+		</form>
 	</body>
 </html>
