@@ -61,4 +61,11 @@ class Kayttaja {
 		$tulos = $kysely->fetchAll(PDO::FETCH_ASSOC);
 		return $tulos;
 	}
+
+
+	function vaihdaSalasana($salasana, $id) {
+		$sql = "UPDATE kayttaja SET salasana=? WHERE idtunnus=?";
+		$kysely = annaYhteys() -> prepare($sql);
+		$kysely -> execute(array($salasana, $id));
+	}
 }

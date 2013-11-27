@@ -10,7 +10,11 @@
 		<p> Käyttäjätunnus: <?php echo $kayttajaTiedot['kayttajatunnus']; ?> <br>
 		 Salasana: <?php echo $kayttajaTiedot['salasana']; ?> </p>
 		<h2> Vaihda salasana </h2>
-		<form>
+		<?php if(!empty($data->virhe)): ?>
+		<?php echo $data->virhe; ?>
+		<?php endif; ?>
+
+		<form action="vaihdaSalasana.php" method="post">
 			Vanha salasana: <input type="password" name="vanha"><br>
 			Uusi salasana: <input type="password" name="uusi"><br>
 			Vahvista uusi salasana: <input type="password" name="uusiVahva"><br>
