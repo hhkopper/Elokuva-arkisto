@@ -5,8 +5,9 @@
 		<title> Omat tiedot </title>
 	</head>
 	<body>
-		<h1> Omat tiedot </h1>
+                <a href="logOut.php"> Kirjaudu ulos </a> <br>
 		<a href="paasivu.php"> Palaa </a>
+		<h1> Omat tiedot </h1>
 		<?php $kayttajaTiedot = $data->tiedot[0]; ?>
 		<p> Käyttäjätunnus: <?php echo htmlspecialchars($kayttajaTiedot['kayttajatunnus']); ?> <br>
 		<h2> Vaihda salasana </h2>

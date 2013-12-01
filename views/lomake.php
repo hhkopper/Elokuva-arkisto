@@ -7,6 +7,7 @@
 	</head>
 	<body>
 		<h1>Lisää uusi elokuva</h1>
+		<a href="paasivu.php"> Palaa </a>
 		<?php if(!empty($data->virhe)): ?>
 		<div class="virhe"><?php echo $data->virhe; ?></div>
 		<?php endif; ?>

@@ -2,11 +2,13 @@
 
 <html>
 	<head>
+		<link rel="stylesheet" href="views/tyylit.css" />
 		<title> Numerojärjestys </title>
 	</head>
 	<body>
-		<h1> Elokuvat numerojärjestyksessä </h1>
+                <a href="logOut.php"> Kirjaudu ulos </a><br>
 		<a href="paasivu.php"> Palaa hakusivulle </a>
+		<h1> Elokuvat numerojärjestyksessä </h1>
 
 		<table border="1">
 			<tr>

@@ -4,11 +4,13 @@ require_once "../Elokuva-arkisto/kirjasto/elokuva.php";
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" href="views/tyylit.css" />
 		<title> Tulokset </title>
 	</head>
 	<body>
-		<h1> Listauksen tulokset </h1>
+                <a href="logOut.php"> Kirjaudu ulos </a> <br>
 		<a href="paasivu.php"> Palaa hakusivulle </a>
+		<h1> Listauksen tulokset </h1>
 
 		<p> Hakusanasi oli <?php echo htmlspecialchars($data->hakusana) ?> </p>
 

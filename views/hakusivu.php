@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
         <head>
+		<link rel="stylesheet" href="views/tyylit.css" />
                 <title> Tulokset </title>
         </head>
         <body>
+                <a href="logOut.php"> Kirjaudu ulos </a> <br>
+		<a href="paasivu.php"> Palaa hakusivulle </a>
                 <h1> Listauksen tulokset </h1>
-                <a href="paasivu.php"> Palaa hakusivulle </a>
                 <?php if (!empty($data->hakusana)): ?>
                 <?php $sana = $data->hakusana; ?>
                 <p> Hakusanasi oli <?php echo htmlspecialchars($sana); ?> </p>
