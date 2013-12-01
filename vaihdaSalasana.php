@@ -15,7 +15,9 @@ $tiedot = kayttaja::haeKayttajaTiedot($id);
 		if($kayttaja['salasana'] == $_POST['vanha'] AND $_POST['uusi'] == $_POST['uusiVahva']) {
 			kayttaja::vaihdaSalasana($_POST['uusi'], $id);
 			header('Location: paasivu.php');
-		} else {
-			naytaNakyma("omatTiedot.php", array('virhe' => "Vanha salasana ei täsmää."));
-		}	
+		} else if ($kayttaja['salasana'] != $_POST['vanha']) {
+			naytaNakyma("omatTiedot.php", array('virhe' => "Vanha salasana ei täsmää.", 'tiedot' => $tiedot));
+		} else if($_POST['uusi'] != $_POST['uusiVahva']) {
+			naytaNakyma("omatTiedot.php", array('virhe' => "Uusi salasanan ja vahvitettu salasana eivät täsmää.", 'tiedot' => $tiedot));
+		}
 	}

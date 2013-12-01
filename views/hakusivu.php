@@ -1,5 +1,3 @@
-<?php
-?>
 <!DOCTYPE html>
 <html>
         <head>
@@ -10,7 +8,7 @@
                 <a href="paasivu.php"> Palaa hakusivulle </a>
                 <?php if (!empty($data->hakusana)): ?>
                 <?php $sana = $data->hakusana; ?>
-                <p> Hakusanasi oli <?php echo $sana; ?> </p>
+                <p> Hakusanasi oli <?php echo htmlspecialchars($sana); ?> </p>
                 <?php endif; ?>
 
                 <table border="1">
@@ -21,9 +19,9 @@
 
                         <?php foreach($data->tulos as $rivi => $tieto):?>
                         <tr>
- 	                        <td> <?php echo $tieto['nimi']; ?> </td>
-                                <td> <?php echo $tieto['numero']; ?></td>
-                                <td> <a href="muokkaa.php?id=<?php echo $tieto['idtunnus']; ?>&haku=<?php echo $sana; ?>"> Tarkastele tietoja/Muokkaa</a> </td>
+ 	                        <td> <?php echo htmlspecialchars($tieto['nimi']); ?> </td>
+                                <td> <?php echo htmlspecialchars($tieto['numero']); ?></td>
+                                <td> <a href="muokkaa.php?id=<?php echo htmlspecialchars($tieto['idtunnus']); ?>&haku=<?php echo htmlspecialchars($sana); ?>"> Tarkastele tietoja/Muokkaa</a> </td>
                         </tr>
                         <?php endforeach; ?>
 

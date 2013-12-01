@@ -1,0 +1,9 @@
+body {
+        background-color: #efc;
+        margin-left: 4em;
+        margin-right: 20%;
+}
+.virhe {
+	font-style: italic;
+	color: red;
+}

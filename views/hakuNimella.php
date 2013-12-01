@@ -1,6 +1,7 @@
 <?php
 require_once "../Elokuva-arkisto/kirjasto/elokuva.php";
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title> Tulokset </title>
@@ -9,7 +10,7 @@ require_once "../Elokuva-arkisto/kirjasto/elokuva.php";
 		<h1> Listauksen tulokset </h1>
 		<a href="paasivu.php"> Palaa hakusivulle </a>
 
-		<p> Hakusanasi oli <?php echo $data->hakusana ?> </p>
+		<p> Hakusanasi oli <?php echo htmlspecialchars($data->hakusana) ?> </p>
 
 		<table border="1">
 			<tr>
@@ -19,8 +20,8 @@ require_once "../Elokuva-arkisto/kirjasto/elokuva.php";
 
 			<?php foreach($data->elokuvat as $rivi => $tieto): ?>
 			<tr>
- 	                        <td> <?php echo $tieto['nimi']; ?> </td>
-                                <td> <?php echo $tieto['numero']; ?></td>
+ 	                        <td> <?php echo htmlspecialchars($tieto['nimi']); ?> </td>
+                                <td> <?php echo htmlspecialchars($tieto['numero']); ?></td>
                         </tr>
 			<?php endforeach; ?>
 		</table>

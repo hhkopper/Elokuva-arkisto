@@ -1,17 +1,17 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 	<head> 
+		<link rel="stylesheet" href="views/tyylit.css" />
 		<title> Omat tiedot </title>
 	</head>
 	<body>
 		<h1> Omat tiedot </h1>
 		<a href="paasivu.php"> Palaa </a>
 		<?php $kayttajaTiedot = $data->tiedot[0]; ?>
-		<p> Käyttäjätunnus: <?php echo $kayttajaTiedot['kayttajatunnus']; ?> <br>
-		 Salasana: <?php echo $kayttajaTiedot['salasana']; ?> </p>
+		<p> Käyttäjätunnus: <?php echo htmlspecialchars($kayttajaTiedot['kayttajatunnus']); ?> <br>
 		<h2> Vaihda salasana </h2>
 		<?php if(!empty($data->virhe)): ?>
-		<?php echo $data->virhe; ?>
+		<div class="virhe"><?php echo $data->virhe; ?></div>
 		<?php endif; ?>
 
 		<form action="vaihdaSalasana.php" method="post">

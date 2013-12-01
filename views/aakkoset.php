@@ -16,9 +16,9 @@
 
 			<?php foreach($data->tulos as $rivi => $tieto):?>
 			<tr>
-				<td> <?php echo $tieto['nimi']; ?> </td>
-				<td> <?php echo $tieto['numero']; ?> </td>
-				<td> <a href="muokkaaLista.php?id=<?php echo $tieto['idtunnus']; ?>">Tarkastele tietoja/Muokkaa </a>
+				<td> <?php echo htmlspecialchars($tieto['nimi']); ?> </td>
+				<td> <?php echo htmlspecialchars($tieto['numero']); ?> </td>
+				<td> <a href="muokkaaLista.php?id=<?php echo htmlspecialchars($tieto['idtunnus']); ?>">Tarkastele tietoja/Muokkaa </a>
 			</tr>
 			<?php endforeach; ?>
 		</table>

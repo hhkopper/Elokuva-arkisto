@@ -16,8 +16,8 @@
 
 			<?php foreach($data->tulos as $rivi => $tieto): ?>
 			<tr>
-				<td> <?php echo $tieto['numero']; ?> </td>
-				<td> <?php echo $tieto['nimi']; ?> </td>
+				<td> <?php echo htmlspecialchars($tieto['numero']); ?> </td>
+				<td> <?php echo htmlspecialchars($tieto['nimi']); ?> </td>
 			</tr>
 			<?php endforeach; ?>
 		</table>

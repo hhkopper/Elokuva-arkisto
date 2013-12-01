@@ -1,14 +1,14 @@
-<?php
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" href="views/tyylit.css" />
 		<title> Etusivu </title>
 	</head>
 	<body>
 		<h1> Elokuva-arkisto </h1>		
 		<p> Tämän sivuston tarkoituksena on antaa mahdollisuus yksityishenkilöille luoda oma elokuva-arkisto. Arkistot on tarkoitettu omaan käyttöön, joten muut eivät pysty seuraamaan luomaasi arkistoa.</p>
 		<?php if(!empty($data->virhe)): ?>
-		<?php echo $data->virhe; ?>
+		<div class="virhe"><?php echo $data->virhe; ?></div>
 		<?php endif; ?>
 		<form action='doLogin.php' method='POST'>
                         Käyttäjätunnus: <input type="text" name="käyttäjätunnus"><br>

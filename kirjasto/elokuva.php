@@ -135,9 +135,7 @@ class Elokuva {
 		return $tulos;
 	}
 
-	function poistaElokuva($elokuvanId) {
-		self::poistaRoolitukset($elokuvanId);
-		self::poistaOhjaukset($elokuvanId);
+	function poistaElokuva($elokuvanId) {		
 		$sql = "DELETE FROM elokuva WHERE idtunnus=?";
 		$kysely = annaYhteys() -> prepare($sql);
 		$kysely -> execute(array($elokuvanId));

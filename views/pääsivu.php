@@ -1,22 +1,23 @@
-<?php
-?><!DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
 	<head>
+		<link rel="stylesheet" href="views/tyylit.css" />
 		<title> Oma elokuva-arkisto </title>
 	</head>
 	<body>
-		<h1> Elokuva-arkisto </h1>
 		<?php $kayttajatunnus = $_SESSION['kirjautunut']->getKayttajatunnus(); ?>
-		<p> Hei <?php echo $kayttajatunnus; ?>! </p>
 		<a href="annaLomake.php"> Lisää elokuva </a>
 		<a href="naytaOmatTiedot.php"> Omat tiedot </a>
 		<a href="logOut.php"> Kirjaudu ulos </a>
+		<h1> Elokuva-arkisto </h1>
+
+                <p> Hei <?php echo htmlspecialchars($kayttajatunnus); ?>! </p>
 		<p> Etsi elokuvia arkistostasi erilaisilla hakusanoilla tai näyttelijän tai ohjaajan nimellä. Vastaukseksi saat listan elokuvia, joihin hakusi liittyy.</p>
 		<p> Hae tietyllä hakusanalla tai siirry aakkosjärjestyslistaan, niin pääset tarkastelemaan elokuvien tietoja ja muokkaamaan niitä. </p>
 
 		<?php if(!empty($data->tyhjaHaku)): ?>
-		<?php echo $data->tyhjaHaku; ?>
+		<div class="virhe"><?php echo $data->tyhjaHaku; ?></div>
 		<?php endif; ?>
 		<form action="listaus.php" method="get">
 			Hakusana: <input type="text" name="hakuSana">
