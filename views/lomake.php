@@ -6,8 +6,10 @@
 		<title> Uusi elokuva</title>
 	</head>
 	<body>
-		<h1>Lisää uusi elokuva</h1>
-		<a href="paasivu.php"> Palaa </a>
+		<div class="nav">
+			<a href="paasivu.php"> Palaa </a>
+		</div>
+		<h1>Lisää uusi elokuva</h1>		
 		<?php if(!empty($data->virhe)): ?>
 		<div class="virhe"><?php echo $data->virhe; ?></div>
 		<?php endif; ?>
@@ -23,7 +25,7 @@
 			
 			Kieli: <input type ="text" value="<?php if (isset($data->lomake->kielet)) echo htmlspecialchars($data->lomake->kielet); ?>" name="kielet"><br><br>
 			
-			Kesto: <input type ="number" value="<?php if (isset($data->lomake->kesto)) echo htmlspecialchars($data->lomake->kesto); ?>" name="kesto"><br><br>
+			Kesto: <input type ="number" value="<?php if (isset($data->lomake->kesto)) echo htmlspecialchars($data->lomake->kesto); ?>" name="kesto"> min<br><br>
 			
 			Ohjaaja: <input type ="text" value="<?php if (isset($data->lomake->ohjaaja1)) echo htmlspecialchars($data->lomake->ohjaaja1); ?>" name="ohjaaja1"><br>
 				<input type ="text" value="<?php if (isset($data->lomake->ohjaaja2)) echo htmlspecialchars($data->lomake->ohjaaja2); ?>" name="ohjaaja2"><br>

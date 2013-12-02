@@ -5,15 +5,17 @@
                 <title> Tulokset </title>
         </head>
         <body>
-                <a href="logOut.php"> Kirjaudu ulos </a> <br>
-		<a href="paasivu.php"> Palaa hakusivulle </a>
+        	<div class="nav">
+                	<a href="logOut.php"> Kirjaudu ulos </a> <br>
+			<a href="paasivu.php"> Palaa hakusivulle </a>
+		</div>
                 <h1> Listauksen tulokset </h1>
                 <?php if (!empty($data->hakusana)): ?>
-                <?php $sana = $data->hakusana; ?>
-                <p> Hakusanasi oli <?php echo htmlspecialchars($sana); ?> </p>
+                <div class="kursiivi"> <?php $sana = $data->hakusana; ?> </div>
+                <p> Hakusanasi oli <strong> <?php echo htmlspecialchars($sana); ?> </strong> </p>
                 <?php endif; ?>
 
-                <table border="1">
+                <table border="1" class="taulukko">
                         <tr>
                                 <th>Elokuvan nimi</th>
                                 <th> Numero</th>

@@ -6,11 +6,13 @@
 		<title> Aakkosjärjestys </title>
 	</head>
 	<body>
-                <a href="logOut.php"> Kirjaudu ulos </a> <br>
-		<a href="paasivu.php"> Palaa hakusivulle </a>
+		<div class="nav">
+                	<a href="logOut.php"> Kirjaudu ulos </a> <br>
+			<a href="paasivu.php"> Palaa hakusivulle </a>
+		</div>
 		<h1> Elokuvat aakkosjärjestyksessä </h1>
 
-		<table border="1">
+		<table border="1"  class="taulukko">
 			<tr>
 				<th> Elokuvan nimi </th>
 				<th> Numero </th>

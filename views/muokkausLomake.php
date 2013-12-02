@@ -5,15 +5,17 @@
 		<link rel="stylesheet" href="views/tyylit.css" />
 		<title> Muokkaus </title>
 	</head>
-	<body>
-
+	<body>	
+		<div class="nav">	
+			<?php $hakusana = $data ->hakusana;?>
+			<?php if ($hakusana != false): ?>
+			<a href="listaus.php?hakuSana=<?php echo htmlspecialchars($data->hakusana);?>"> Palaa </a>
+			<?php else: ?>
+			<a href="listausAakkoset.php"> Palaa </a>
+			<?php endif; ?>
+		</div>
+		
 		<h1> Muokkaa elokuvan tietoja </h1>
-		<?php $hakusana = $data ->hakusana;?>
-		<?php if ($hakusana != false): ?>
-		<a href="listaus.php?hakuSana=<?php echo htmlspecialchars($data->hakusana);?>"> Palaa </a>
-		<?php else: ?>
-		<a href="listausAakkoset.php"> Palaa </a><br><br>
-		<?php endif; ?>
 		
 		<?php if(!empty($data->virhe)): ?>
 		<div class="virhe"><?php echo $data->virhe; ?> </div>
@@ -31,7 +33,7 @@
 
 			Kieli/kielet: <input type ="text" value="<?php if (isset($data->tulos->kielet)) echo htmlspecialchars($data->tulos->kielet); ?>" name="kielet"><br><br>
 
-			Kesto: <input type ="number" value="<?php if (isset($data->tulos->kesto)) echo htmlspecialchars($data->tulos->kesto); ?>" name="kesto"><br><br>
+			Kesto: <input type ="number" value="<?php if (isset($data->tulos->kesto)) echo htmlspecialchars($data->tulos->kesto); ?>" name="kesto"> min<br><br>
 
 			Ohjaaja: <input type ="text" value="<?php if (isset($data->ohjaajat[0])) echo htmlspecialchars($data->ohjaajat[0]); ?>" name="ohjaaja[]"><br>
 				<input type ="text" value="<?php if (isset($data->ohjaajat[1])) echo htmlspecialchars($data->ohjaajat[1]); ?>" name="ohjaaja[]"><br>
@@ -52,6 +54,7 @@
 
 		<form action="poistaElokuva.php" method="get">
 			<input type="hidden" value="<?php echo htmlspecialchars($data->tulos->idtunnus); ?>" name="poistettava">
+			<input type="hidden" value="<?php echo htmlspecialchars($data->hakusana); ?>" name="haku">
 			<input type="submit" value="Poista">
 		</form>
 	</body>

@@ -29,5 +29,11 @@ require_once "kirjasto/toiminnot.php";
 		elokuva::tallennaMuokatutElokuvanTiedot($numero, $ikaraja, $vuosi, $kesto, $talletettava);
 		elokuva::tallennaMuokatutOhjaajat($_POST['ohjaaja'][0], $_POST['ohjaaja'][1], $_POST['ohjaaja'][2], $_POST['ohjaaja'][3], $_POST['ohjaaja'][4], $_POST['talletettava']);
 		elokuva::tallennaMuokatutNayttelijat($_POST['nayttelija'][0], $_POST['nayttelija'][1], $_POST['nayttelija'][2], $_POST['nayttelija'][3], $_POST['nayttelija'][4], $_POST['talletettava']);
-		header('Location: paasivu.php');
+		
+		if($hakusana == false) {
+			header('Location: listausAakkoset.php');
+		} else {
+			header('Location: listaus.php?hakuSana='.$hakusana);
+		}
+		//header('Location: paasivu.php');
 	}

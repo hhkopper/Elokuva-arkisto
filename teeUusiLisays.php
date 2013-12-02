@@ -14,7 +14,7 @@ require_once "kirjasto/toiminnot.php";
 		$ikaraja = etsiNumero($_POST['ikaraja']);
 		$vuosi = etsiNumero($_POST['vuosi']);
 		
-		if(($numero == null and $_POST['numero'] != '') OR ($ikaraja == null and $_POST['ikaraja'] != '')  OR ($vuosi == null and $_POST['valmistusvuosi'] != '') OR ($kesto == null and $_POST['kesto'] != '')) {
+		if(($numero == null and $_POST['numero'] != '') OR ($ikaraja == null and $_POST['ikaraja'] != '')  OR ($vuosi == null and $_POST['vuosi'] != '') OR ($kesto == null and $_POST['kesto'] != '')) {
 			naytaNakyma("lomake.php", array('virhe' => "Numero, ikäraja, valmistusvuosi ja kesto täytyy ilmaista numeroilla.", "lomake" => $lomake));
 		}
 		

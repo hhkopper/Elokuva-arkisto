@@ -5,14 +5,21 @@
 		<title> Omat tiedot </title>
 	</head>
 	<body>
-                <a href="logOut.php"> Kirjaudu ulos </a> <br>
-		<a href="paasivu.php"> Palaa </a>
+		<div class="nav">
+                	<a href="logOut.php"> Kirjaudu ulos </a> <br>
+			<a href="paasivu.php"> Palaa </a>
+		</div>
 		<h1> Omat tiedot </h1>
 		<?php $kayttajaTiedot = $data->tiedot[0]; ?>
 		<p> Käyttäjätunnus: <?php echo htmlspecialchars($kayttajaTiedot['kayttajatunnus']); ?> <br>
 		<h2> Vaihda salasana </h2>
+		
 		<?php if(!empty($data->virhe)): ?>
 		<div class="virhe"><?php echo $data->virhe; ?></div>
+		<?php endif; ?>
+		
+		<?php if(!empty($data->onnistunut)): ?>
+		<div class="onnistui"><?php echo $data->onnistunut; ?></div>
 		<?php endif; ?>
 
 		<form action="vaihdaSalasana.php" method="post">
@@ -24,7 +31,7 @@
 		
 		<h3> Poista käyttäjätili </h3>
 		<p> Tämän linkin avulla voit poistaa koko käyttäjätilisi. Tällöin kaikki tietosi poistetaan ja tietokantasi tyhjennetään. </p>
-		<form action="poistaKayttaja.php" method="post">
+		<form action="tarkistaPoisto.php" method="post">
 			<input type="submit" value="Poista käyttäjätili" >
 		</form>
 	</body>

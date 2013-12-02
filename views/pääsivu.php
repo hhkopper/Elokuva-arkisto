@@ -7,11 +7,13 @@
 	</head>
 	<body>
 		<?php $kayttajatunnus = $_SESSION['kirjautunut']->getKayttajatunnus(); ?>
-		<a href="annaLomake.php"> Lisää elokuva </a>
-		<a href="naytaOmatTiedot.php"> Omat tiedot </a>
-		<a href="logOut.php"> Kirjaudu ulos </a>
+		<div class="nav">
+			<a href="annaLomake.php"> Lisää elokuva </a>
+			<a href="naytaOmatTiedot.php"> Omat tiedot </a>
+			<a href="logOut.php"> Kirjaudu ulos </a>
+		</div>
+		
 		<h1> Elokuva-arkisto </h1>
-
                 <p> Hei <?php echo htmlspecialchars($kayttajatunnus); ?>! </p>
 		<p> Etsi elokuvia arkistostasi erilaisilla hakusanoilla tai näyttelijän tai ohjaajan nimellä. Vastaukseksi saat listan elokuvia, joihin hakusi liittyy.</p>
 		<p> Hae tietyllä hakusanalla tai siirry aakkosjärjestyslistaan, niin pääset tarkastelemaan elokuvien tietoja ja muokkaamaan niitä. </p>
