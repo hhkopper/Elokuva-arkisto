@@ -6,7 +6,8 @@
 		<title> Varmista poisto </title>
 	</head>
 	<body>
-		<p> Oletko varma, että haluat poistaa käyttäjätilisi? </p>
+		<p> Oletko varma, että haluat poistaa käyttäjätilisi?</p> 
+		<p>Tällöin kaikki tietosi ja elokuvasi poistetaan tietokannasta, etkä voi saada niitä enää takaisin.</p>
 		<form action="poistaKayttaja.php" method="post">
 			<input type="submit" value="Vahvista poisto" >
 		</form>
